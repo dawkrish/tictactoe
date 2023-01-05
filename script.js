@@ -1,25 +1,31 @@
 const boxes = document.getElementsByClassName("box")
 const result = document.getElementById("result")
+const turn = document.getElementById("turn")
 
 
 
 k = 0
+
 function foo(a){
-    //console.log(a.dataset.code)
-    if(!isWin()){
-        if(k != 9){
+    if(!isWin() ){
+        if(k < 9){
             if(a.innerHTML == ""){
                 if(k%2 == 0){
+                    turn.innerHTML = "O turns !"
                     a.innerHTML = "X"
+
                     if(isWin()){
                         result.innerHTML = "X wins"
+                        turn.innerHTML = ""
                         k = 9;
                     }
                 }
                 else{
+                    turn.innerHTML = "X turns !"
                     a.innerHTML = "O"
                     if(isWin()){
                         result.innerHTML = "O wins"
+                        turn.innerHTML = ""
                         k = 9;
                     }
                 }
@@ -31,11 +37,6 @@ function foo(a){
             result.innerHTML = "nobody wins !"
         }
     }
-    
-    else{
-        console.log("The game is over !")
-    }
-    
 
 }
 
@@ -217,4 +218,13 @@ function isWin(){
     return false
 }
 
-//console.log("Hello world");
+function isBoardFill(){
+    let c = 0;
+    for(let i = 0; i < boxes.length; i++){
+        if(boxes[i].innerHTML != ""){
+            c++;
+        }
+    }
+    return c
+    // we are counting number of filled boxes !
+}

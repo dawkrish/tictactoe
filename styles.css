@@ -1,3 +1,9 @@
+body{
+    background-color: #D7E9B9;
+    font-family: 'Rowdies', cursive;
+    text-align: center;
+}
+
 #game{
     display: flex;
     align-items: center;
@@ -5,20 +11,23 @@
 }
 
 .board{
-
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
 
 .box{
-    border: 1px solid black;
+    border: 1px solid #D7E9B9;
+    background-color: #FFD56F;
+    border-radius: 5px;
     width: 50px;
     height: 50px;
+    font-family: 'Rowdies', cursive;
+    font-size: large;
 }
 
 .box:hover{
-    background-color: grey;
+    background-color: #FFFBAC
 }
 
 #result{
@@ -26,4 +35,17 @@
     border-radius: 15px;
     height: 50px;
     
+}
+
+#turn{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
