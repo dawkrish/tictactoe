@@ -10,6 +10,19 @@ body{
     justify-content: center;
 }
 
+#reset{
+    margin-top: 30px;
+    font-size: x-large;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF7B54;
+    font-family: 'Rowdies', cursive;
+}
+
+#reset:hover{
+    background-color: #FAAB78;
+}
+
 .board{
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -42,10 +55,13 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: xx-large;
 }
 
 #result{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 370px;
+    font-size: xx-large;
 }

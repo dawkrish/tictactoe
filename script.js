@@ -1,46 +1,58 @@
 const boxes = document.getElementsByClassName("box")
 const result = document.getElementById("result")
 const turn = document.getElementById("turn")
+const reset = document.getElementById("reset")
 
 
 
 k = 0
 
 function foo(a){
-    if(!isWin() ){
-        if(k < 9){
-            if(a.innerHTML == ""){
-                if(k%2 == 0){
-                    turn.innerHTML = "O turns !"
-                    a.innerHTML = "X"
+    if(!isWin()){
+        if(a.innerHTML == ""){
+            if(k%2 == 0){
+                turn.innerHTML = "O turns !"
+                a.innerHTML = "X"
 
-                    if(isWin()){
-                        result.innerHTML = "X wins"
-                        turn.innerHTML = ""
-                        k = 9;
-                    }
+                if(isWin()){
+                    result.innerHTML = "X wins"
+                    turn.innerHTML = ""
+                    reset.innerHTML = "Play Again"
+                    k = 9;
                 }
-                else{
-                    turn.innerHTML = "X turns !"
-                    a.innerHTML = "O"
-                    if(isWin()){
-                        result.innerHTML = "O wins"
-                        turn.innerHTML = ""
-                        k = 9;
-                    }
-                }
-                k++;
                 
             }
-        }
-        else{
-            result.innerHTML = "nobody wins !"
+            else{
+                turn.innerHTML = "X turns !"
+                a.innerHTML = "O"
+                if(isWin()){
+                    result.innerHTML = "O wins"
+                    turn.innerHTML = ""
+                    reset.innerHTML = "Play Again"
+                    k = 9;
+                }
+                
+            }
+            k++;
+            if(k == 9){
+                result.innerHTML = "Nobody Wins !"
+                turn.innerHTML = ""
+                reset.innerHTML = "Play again"
+            }
+            
         }
     }
-
 }
 
-
+reset.addEventListener("click",()=>{
+    for(let i = 0; i < boxes.length; i++){
+        boxes[i].innerHTML = ""
+    }
+    turn.innerHTML = "X turns !"
+    result.innerHTML = ""
+    reset.innerHTML = "Reset"
+    k = 0;
+})
 
 function isWin(){
     let c = 0;
@@ -152,7 +164,7 @@ function isWin(){
     }
     c = 0
     // third column check
-    for(let i = 1; i < 9; i+=3){
+    for(let i = 2; i < 9; i+=3){
         if(boxes[i].innerHTML == "X"){
             c++;
         }
@@ -162,7 +174,7 @@ function isWin(){
         }
     }
     c = 0
-    for(let i = 1; i < 9; i+=3){
+    for(let i = 2; i < 9; i+=3){
         if(boxes[i].innerHTML == "O"){
             c++;
         }
@@ -216,15 +228,4 @@ function isWin(){
     }
 
     return false
-}
-
-function isBoardFill(){
-    let c = 0;
-    for(let i = 0; i < boxes.length; i++){
-        if(boxes[i].innerHTML != ""){
-            c++;
-        }
-    }
-    return c
-    // we are counting number of filled boxes !
 }
